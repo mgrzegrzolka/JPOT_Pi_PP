@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug POT_PI_PP C++",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/JPOT_PI_PP",
+            "args": [
+                ""
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            //"environment": [
+            //    {
+            //        "name": "PATH",
+            //        "value": "${env:PATH};${env:VCPKG_PATH}\\bin"
+            //    }
+            //],
+            "externalConsole" : true
+        }
+    ]
+}
