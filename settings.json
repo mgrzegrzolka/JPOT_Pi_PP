@@ -1,0 +1,17 @@
+{
+    "jp_lvl_config": [{
+        "id" : 1,
+        "name" : "Main Lvl",
+        "mysteryValueMin": 1000,
+        "mysteryValueMax": 1500,
+        "minBet": 50,
+        "restartValue": 200
+    },{
+        "id" : 2,
+        "name" : "Sec Lvl",
+        "mysteryValueMin": 800,
+        "mysteryValueMax": 1000,
+        "minBet": 40,
+        "restartValue": 100
+    }]
+  }

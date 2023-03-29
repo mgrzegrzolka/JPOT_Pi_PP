@@ -30,6 +30,11 @@ include_directories(externals)
 
 set(WATCHDOG_SERVICE_src
         main.cpp
+        jpotM.hpp
+        jpotM.cpp
+        common.hpp
+        jpotInstance.hpp
+        jpotInstance.cpp
 )
 
 add_executable(${PROJECT_NAME} ${WATCHDOG_SERVICE_src})
