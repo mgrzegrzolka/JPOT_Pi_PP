@@ -17,6 +17,8 @@ public:
     bool start_jp_cycle();
     bool create_jp_instance(std::vector<jpLvlSetting> main_s);
 private:
+    void increasingAllPot(uint bet);
+    int checkAllJpHits();
     std::vector<jpLvlSetting> main_settings;
     std::map<int, jpotInstance*> instances; 
 };

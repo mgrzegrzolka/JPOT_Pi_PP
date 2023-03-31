@@ -7,21 +7,22 @@
 class jpotInstance
 {
 public:
-    jpotInstance(jpLvlSetting config) : id(config.id), name(config.name), mysteryValueMin(config.mysteryValueMin),
-                                        mysteryValueMax(config.mysteryValueMax), minBet(config.minBet), restartValue(config.restartValue)
-    {
-        //TODO
-    };
+    jpotInstance(jpLvlSetting config);
     ~jpotInstance() {};
 
-    void increasing_pot(int bet);
+    uint calcHitPoint();
+    uint calcRestartValue();
+    void increasingPot(uint bet);
+    void checkIfHit();
 private:
     int id;
     std::string name;
-    int mysteryValueMin;
-    int mysteryValueMax;
-    int minBet;
-    int restartValue;
+    uint hitPoint;
+    uint jpValue;
+    uint mysteryValueMin;
+    uint mysteryValueMax;
+    uint minBet;
+    uint restartValue;
 };
 
 #endif

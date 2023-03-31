@@ -6,7 +6,6 @@
 
 int main( int argc, char * argv[ ] )
 {
-
     jpotM mainCtxt;
     mainCtxt.start_jp_cycle();
 

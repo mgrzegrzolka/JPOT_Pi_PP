@@ -6,10 +6,10 @@
 struct jpLvlSetting{
     int id;
     std::string name;
-    int mysteryValueMin;
-    int mysteryValueMax;
-    int minBet;
-    int restartValue;
+    uint mysteryValueMin;
+    uint mysteryValueMax;
+    uint minBet;
+    uint restartValue;
 };
 
 #endif
