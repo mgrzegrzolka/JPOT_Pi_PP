@@ -2,16 +2,19 @@
 #include  <stdlib.h> 
 #include <map>
 
-jpotInstance::jpotInstance(jpLvlSetting config) : id(config.id), name(config.name), mysteryValueMin(config.mysteryValueMin),
+jpotInstance::jpotInstance(jpLvlSetting config, int initId) : id(config.id), name(config.name), mysteryValueMin(config.mysteryValueMin),
                                     mysteryValueMax(config.mysteryValueMax), minBet(config.minBet), restartValue(config.restartValue)
 {
+    instId = (!initId) ? 1 : initId++;
+
     hitPoint = calcHitPoint();
     jpValue = calcRestartValue();
 }
 
-void jpotInstance::increasingPot(uint bet)
+void jpotInstance::increasingPot(uint bet, std::string egmId)
 {
     jpValue += bet;
+    contributeList.push(make_pair(egmId, bet));
 }
 
 uint  jpotInstance::calcHitPoint()
@@ -31,7 +34,21 @@ uint jpotInstance::calcRestartValue()
     return restartValue;
 }
 
-void jpotInstance::checkIfHit()
+bool jpotInstance::checkIfHit()
 {
-    
+    if(jpValue >= hitPoint) {
+        status = 1;
+        return true;
+    }
+    return false;
+}
+
+int jpotInstance::getStatus()
+{
+    return status;
+}
+
+int jpotInstance::getInstId() 
+{
+    return instId;
 }

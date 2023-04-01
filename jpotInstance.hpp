@@ -3,19 +3,24 @@
 
 #include "common.hpp"
 #include <string>
+#include <stack>
+#include <utility>
 
 class jpotInstance
 {
 public:
-    jpotInstance(jpLvlSetting config);
+    jpotInstance(jpLvlSetting config, int initId);
     ~jpotInstance() {};
 
     uint calcHitPoint();
     uint calcRestartValue();
-    void increasingPot(uint bet);
-    void checkIfHit();
+    void increasingPot(uint bet, std::string egmId);
+    bool checkIfHit();
+    int getStatus();
+    int getInstId();
 private:
     int id;
+    int instId;
     std::string name;
     uint hitPoint;
     uint jpValue;
@@ -23,6 +28,8 @@ private:
     uint mysteryValueMax;
     uint minBet;
     uint restartValue;
+    std::stack<std::pair<std::string, uint>> contributeList;
+    int status; /* 0 - active, 1 - after hit */
 };
 
 #endif

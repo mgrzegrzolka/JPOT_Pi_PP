@@ -49,8 +49,10 @@ bool jpotM::start_jp_cycle()
     while(true) {
         printf("Get input from EGM");
         int bet = 50;
-        increasingAllPot(bet);
+        std::string egm = "EGM1";
+        increasingAllPot(bet, egm);
         checkAllJpHits();
+        sendAllWin();
     }
     create_jp_instance(main_settings);
     return true;
@@ -59,18 +61,25 @@ bool jpotM::start_jp_cycle()
 bool jpotM::create_jp_instance(std::vector<jpLvlSetting> main_s)
 {
     printf("Create instance");
+    int iId;
     for(auto &e: main_s) {
-        if(instances.find(e.id) == instances.end()) {
-            instances.insert(std::make_pair(e.id, new jpotInstance(e)));
+        auto instTmp = instances.find(e.id);
+        iId = 0;
+        if(instTmp == instances.end()) {
+            instances.insert(std::make_pair(e.id, new jpotInstance(e, iId)));
+        } else if(instTmp->second->getStatus() > 1) {
+            iId = instTmp->second->getInstId();
+            delete instTmp->second; // del current completed instance 
+            instTmp->second = new jpotInstance(e, ++iId); // create new instace with increased instance id
         }
     }
     return true;
 }
 
-void jpotM::increasingAllPot(uint bet)
+void jpotM::increasingAllPot(uint bet, std::string egmId)
 {
     for(auto inst = instances.begin(); inst != instances.end(); ++inst) {
-        inst->second->increasingPot(bet);
+        inst->second->increasingPot(bet, egmId);
     }
 }
 
@@ -78,7 +87,12 @@ int jpotM::checkAllJpHits()
 {
     int noofHit = 0;
     for(auto inst = instances.begin(); inst != instances.end(); ++inst) {
-        
+        if(inst->second->checkIfHit()) noofHit++;
     }
     return noofHit;
+}
+
+void jpotM::sendAllWin()
+{
+    /* send win to egm */
 }
