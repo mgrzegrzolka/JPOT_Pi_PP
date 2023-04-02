@@ -2,11 +2,10 @@
 #include  <stdlib.h> 
 #include <map>
 
-jpotInstance::jpotInstance(jpLvlSetting config, int initId) : id(config.id), name(config.name), mysteryValueMin(config.mysteryValueMin),
+jpotInstance::jpotInstance(jpLvlSetting config, int prevId) : id(config.id), name(config.name), mysteryValueMin(config.mysteryValueMin),
                                     mysteryValueMax(config.mysteryValueMax), minBet(config.minBet), restartValue(config.restartValue)
 {
-    instId = (!initId) ? 1 : initId++;
-
+    instId = (!prevId) ? 1 : prevId++;
     hitPoint = calcHitPoint();
     jpValue = calcRestartValue();
 }

@@ -70,7 +70,7 @@ bool jpotM::create_jp_instance(std::vector<jpLvlSetting> main_s)
         } else if(instTmp->second->getStatus() > 1) {
             iId = instTmp->second->getInstId();
             delete instTmp->second; // del current completed instance 
-            instTmp->second = new jpotInstance(e, ++iId); // create new instace with increased instance id
+            instTmp->second = new jpotInstance(e, iId); // create new instace
         }
     }
     return true;
