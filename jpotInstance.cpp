@@ -2,7 +2,7 @@
 #include  <stdlib.h> 
 #include <map>
 
-jpotInstance::jpotInstance(jpLvlSetting config, int prevId) : id(config.id), name(config.name), mysteryValueMin(config.mysteryValueMin),
+jpotInstance::jpotInstance(common::jpLvlSetting config, int prevId) : id(config.id), name(config.name), mysteryValueMin(config.mysteryValueMin),
                                     mysteryValueMax(config.mysteryValueMax), minBet(config.minBet), restartValue(config.restartValue)
 {
     instId = (!prevId) ? 1 : prevId++;

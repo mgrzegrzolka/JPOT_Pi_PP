@@ -14,7 +14,7 @@ jpotM::jpotM()
 bool jpotM::read_config_file()
 {
     nlohmann::json config;
-    jpLvlSetting tmpSetting;
+    common::jpLvlSetting tmpSetting;
     printf("Read config file !!!");
     
     std::ifstream sFile("settings.json");
@@ -58,7 +58,7 @@ bool jpotM::start_jp_cycle()
     return true;
 }
 
-bool jpotM::create_jp_instance(std::vector<jpLvlSetting> main_s)
+bool jpotM::create_jp_instance(std::vector<common::jpLvlSetting> main_s)
 {
     printf("Create instance");
     int iId;

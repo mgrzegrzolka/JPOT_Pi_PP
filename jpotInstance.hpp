@@ -9,7 +9,7 @@
 class jpotInstance
 {
 public:
-    jpotInstance(jpLvlSetting config, int prevId);
+    jpotInstance(common::jpLvlSetting config, int prevId);
     ~jpotInstance() {};
 
     uint calcHitPoint();

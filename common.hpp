@@ -3,13 +3,16 @@
 
 #include <string>
 
-struct jpLvlSetting{
-    int id;
-    std::string name;
-    uint mysteryValueMin;
-    uint mysteryValueMax;
-    uint minBet;
-    uint restartValue;
-};
+namespace  common
+{
+    struct jpLvlSetting{
+        int id;
+        std::string name;
+        uint mysteryValueMin;
+        uint mysteryValueMax;
+        uint minBet;
+        uint restartValue;
+    };
+}
 
 #endif
