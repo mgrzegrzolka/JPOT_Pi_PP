@@ -15,6 +15,7 @@ public:
 
     bool read_config_file();
     bool start_jp_cycle();
+    void printAllStates();
     bool create_jp_instance(std::vector<common::jpLvlSetting> main_s);
 private:
     void increasingAllPot(uint bet, std::string egmId);

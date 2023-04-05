@@ -3,7 +3,7 @@
 #include <map>
 
 jpotInstance::jpotInstance(common::jpLvlSetting config, int prevId) : id(config.id), name(config.name), mysteryValueMin(config.mysteryValueMin),
-                                    mysteryValueMax(config.mysteryValueMax), minBet(config.minBet), restartValue(config.restartValue)
+                                    mysteryValueMax(config.mysteryValueMax), minBet(config.minBet), restartValue(config.restartValue), status(0)
 {
     instId = (!prevId) ? 1 : prevId++;
     hitPoint = calcHitPoint();
@@ -50,4 +50,17 @@ int jpotInstance::getStatus()
 int jpotInstance::getInstId() 
 {
     return instId;
+}
+
+void jpotInstance::sendWin()
+{
+    printf("!!!!WIN!!!!! --- Id: %d, Inst: %d, Name: %s, Value: %d\n", id, instId, name.c_str(), jpValue);
+    printf("!!!!EGM!!!!! --- EGM:%s \n-------------\n", contributeList.top().first.c_str());
+    if(true) {
+        status = 2;
+    }
+}
+void jpotInstance::printInstaceState()
+{
+    printf("ID: %d, Inst: %d, Name: %s, JpValue: %d \n", id, instId, name.c_str(), jpValue);
 }

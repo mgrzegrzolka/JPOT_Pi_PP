@@ -18,6 +18,8 @@ public:
     bool checkIfHit();
     int getStatus();
     int getInstId();
+    void printInstaceState();
+    void sendWin();
 private:
     int id;
     int instId;

@@ -1,4 +1,5 @@
 #include "jpotM.hpp"
+#include <iostream>
 #include <map>
 #include <utility>
 #include <string>
@@ -36,7 +37,7 @@ bool jpotM::read_config_file()
 
             main_settings.push_back(tmpSetting);
         }
-
+        printf("Readed config from json \n");
         return true;
     }
     return false;
@@ -44,25 +45,29 @@ bool jpotM::read_config_file()
 
 bool jpotM::start_jp_cycle()
 {
-    printf("Start jp cycle");
-
+    int bet;
+    std::string egm;
+    printf("Start jp cycle \n");
     while(true) {
-        printf("Get input from EGM");
-        int bet = 50;
-        std::string egm = "EGM1";
+        bet = 0;
+        printf("Get input from EGM \n");
+        create_jp_instance(main_settings);
+        printAllStates();
+        std::cout<<"Bet:";
+        std::cin>>bet; 
+        egm = "EGM1";
         increasingAllPot(bet, egm);
         checkAllJpHits();
         sendAllWin();
     }
-    create_jp_instance(main_settings);
     return true;
 }
 
 bool jpotM::create_jp_instance(std::vector<common::jpLvlSetting> main_s)
 {
-    printf("Create instance");
+    printf("Create instance \n");
     int iId;
-    for(auto &e: main_s) {
+    for(auto &e : main_s) {
         auto instTmp = instances.find(e.id);
         iId = 0;
         if(instTmp == instances.end()) {
@@ -94,5 +99,16 @@ int jpotM::checkAllJpHits()
 
 void jpotM::sendAllWin()
 {
-    /* send win to egm */
+    for(auto inst = instances.begin(); inst != instances.end(); ++inst) {
+        if(inst->second->getStatus() == 1) {
+            inst->second->sendWin();
+        }
+    }
+}
+
+void jpotM::printAllStates()
+{
+    for(auto inst = instances.begin(); inst != instances.end(); ++inst) {
+        inst->second->printInstaceState();
+    }
 }
