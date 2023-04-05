@@ -9,18 +9,9 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/JPOT_PI_PP",
-            "args": [
-                ""
-            ],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            //"environment": [
-            //    {
-            //        "name": "PATH",
-            //        "value": "${env:PATH};${env:VCPKG_PATH}\\bin"
-            //    }
-            //],
-            "externalConsole" : true
-        }
+            "args": ["arg1", "arg2"],
+            "environment": [{ "name": "config", "value": "Debug" }],
+            "cwd": "${workspaceFolder}"
+          }
     ]
 }
